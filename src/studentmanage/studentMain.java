@@ -7,7 +7,7 @@ public class studentMain {
 
         while (true) {
             //界面123
-            System.out.println("------------");
+            System.out.println("-------------");
             System.out.println("欢迎来到学生信息管理系统");
             System.out.println("0 显示全部学生信息");
             System.out.println("1 按学号搜索学生信息");
