@@ -6,7 +6,7 @@ public class studentMain {
         studentManager statusManager = new studentManager();
 
         while (true) {
-            //界面
+            //界面1
             System.out.println("------------");
             System.out.println("欢迎来到学生信息管理系统");
             System.out.println("0 显示全部学生信息");
