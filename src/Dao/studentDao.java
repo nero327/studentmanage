@@ -1,12 +1,14 @@
 package Dao;
+
 import studentmanage.Student;
+
 import java.sql.*;
 import java.util.*;
 
 public class studentDao {
 
     //添加学生信息
-    public void add(Student Student){
+    public void add(Student Student) {
         //需要连接数据库，使用sql语句进行添加
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -22,20 +24,20 @@ public class studentDao {
             stmt.setString(6, Student.getGrade());
             stmt.setInt(7, Student.getClasses());
             stmt.executeUpdate();
-        }
-         catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt);
         }
         System.out.println("添加成功！");
     }
 
-        /**修改学生信息
-    连接数据库，foreach进行sql语句替换*/
+    /**
+     * 修改学生信息
+     * 连接数据库，foreach进行sql语句替换
+     */
     //修改学生姓名
-    public void changeName(Integer changeId,String name) {
+    public void changeName(Integer changeId, String name) {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
@@ -47,14 +49,14 @@ public class studentDao {
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt);
         }
         System.out.println("姓名修改成功!!");
     }
+
     //修改学生性别
-    public void changeSex(Integer changeId,String sex) {
+    public void changeSex(Integer changeId, String sex) {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
@@ -66,12 +68,12 @@ public class studentDao {
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt);
         }
         System.out.println("性别修改成功!!");
     }
+
     //修改学生学院
     public void changeAcademy(Integer changeId, String academy) {
         Connection conn = null;
@@ -85,12 +87,12 @@ public class studentDao {
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt);
         }
         System.out.println("学院修改成功!!");
     }
+
     //修改学生专业
     public void changeMajor(Integer changeId, String major) {
         Connection conn = null;
@@ -104,12 +106,12 @@ public class studentDao {
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt);
         }
         System.out.println("专业修改成功!!");
     }
+
     //修改学生年级
     public void changeGrade(Integer changeId, String grade) {
         Connection conn = null;
@@ -123,12 +125,12 @@ public class studentDao {
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt);
         }
         System.out.println("年级修改成功!!");
     }
+
     //修改学生班级
     public void changeClasses(Integer changeId, String classes) {
         Connection conn = null;
@@ -142,8 +144,7 @@ public class studentDao {
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt);
         }
         System.out.println("班级修改成功!!");
@@ -160,17 +161,15 @@ public class studentDao {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, deleteId);
             stmt.executeUpdate();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt);
         }
         System.out.println("删除成功!!");
     }
 
-//数据库操作
+    //数据库操作
     public List<Student> getAll() {
         Connection conn = null;
         Statement stmt = null;
@@ -191,7 +190,7 @@ public class studentDao {
                 String grade = rs.getString("grade");
                 Integer classes = rs.getInt("classes");
 
-                Student Student = new Student(id,name, sex, academy, major, grade, classes);
+                Student Student = new Student(id, name, sex, academy, major, grade, classes);
 
                 stuList.add(Student);
             }
@@ -204,7 +203,7 @@ public class studentDao {
     }
 
     //判断id是否存在
-    public boolean judgeExist(Integer stuId){
+    public boolean judgeExist(Integer stuId) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -215,17 +214,15 @@ public class studentDao {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, stuId);
             rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 count = rs.getInt("count");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt, rs);
         }
-        if(count==0) return false;
+        if (count == 0) return false;
         else
             return true;
     }
@@ -236,14 +233,14 @@ public class studentDao {
         Connection conn = null;
         PreparedStatement stmt = null;
         Student Student = null;
-        try{
+        try {
             conn = Mysql.getConn();
             String sql = "select * from student_info where id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, findId);
             ResultSet tmpres = stmt.executeQuery();
             Student = new Student();
-            while(tmpres.next()){
+            while (tmpres.next()) {
                 Student.setId(tmpres.getInt("id"));
                 Student.setName(tmpres.getString("name"));
                 Student.setSex(tmpres.getString("sex"));
@@ -252,10 +249,9 @@ public class studentDao {
                 Student.setGrade(tmpres.getString("grade"));
                 Student.setClasses(tmpres.getInt("classes"));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             Mysql.closeConn(conn, stmt);
         }
         return Student;

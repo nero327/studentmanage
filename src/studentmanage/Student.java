@@ -20,45 +20,59 @@ public class Student {
     public Student(){
     	
     }
+
 	public Integer getId() {
 		return id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public String getSex() {
 		return sex;
 	}
+
 	public String getAcademy() {
 		return academy;
 	}
+
 	public String getMajor() {
 		return major;
 	}
+
 	public String getGrade() {
 		return grade;
 	}
+
 	public Integer getClasses() {
 		return classes;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+
 	public void setAcademy(String academy) {
 		this.academy = academy;
 	}
+
 	public void setMajor(String major) {
 		this.major = major;
 	}
+
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+
 	public void setClasses(Integer classes) {
 		this.classes = classes;
 	}

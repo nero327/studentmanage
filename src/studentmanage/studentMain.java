@@ -1,15 +1,18 @@
 package studentmanage;
-import java.util.*;
+
+import javax.print.StreamPrintServiceFactory;
+import java.util.Scanner;
+import java.util.concurrent.TransferQueue;
+
 public class studentMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         studentManager statusManager = new studentManager();
-
         while (true) {
             //界面
             System.out.println("-------------");
-            System.out.println("欢迎来到学生信息管理系统");
             System.out.println("0 显示全部学生信息");
+            System.out.println("欢迎来到学生信息管理系统");
             System.out.println("1 按学号搜索学生信息");
             System.out.println("2 增加学生信息");
             System.out.println("3 修改学生信息");

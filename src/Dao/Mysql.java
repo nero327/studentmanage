@@ -1,4 +1,5 @@
 package Dao;
+
 import java.sql.*;
 
 public class Mysql {
@@ -8,7 +9,7 @@ public class Mysql {
     private static final String password = "root";
     private static Connection con = null;
 
-        //获取连接
+    //获取连接
     public static Connection getConn() {
         try {
             // 1.注册驱动
@@ -21,23 +22,24 @@ public class Mysql {
         return con;
     }
 
+
     //关闭连接（有结果集）
-    public static void closeConn(Connection conn, Statement stmt, ResultSet rs){
-        if(rs != null){
+    public static void closeConn(Connection conn, Statement stmt, ResultSet rs) {
+        if (rs != null) {
             try {
                 rs.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        if(stmt != null){
+        if (stmt != null) {
             try {
                 stmt.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        if(conn != null){
+        if (conn != null) {
             try {
                 conn.close();
             } catch (SQLException e) {
@@ -47,13 +49,13 @@ public class Mysql {
     }
 
     //关闭连接（无结果集）
-    public static void closeConn(Connection conn, Statement stmt){
-        if(stmt != null) try {
+    public static void closeConn(Connection conn, Statement stmt) {
+        if (stmt != null) try {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if(conn != null){
+        if (conn != null) {
             try {
                 conn.close();
             } catch (SQLException e) {
@@ -64,7 +66,7 @@ public class Mysql {
 
     //测试连接数据库
     public static void main(String[] args) {
-            System.out.print(getConn());
-        }
+        System.out.print(getConn());
+    }
 
 }
