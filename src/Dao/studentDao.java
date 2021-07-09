@@ -222,9 +222,7 @@ public class studentDao {
         } finally {
             Mysql.closeConn(conn, stmt, rs);
         }
-        if (count == 0) return false;
-        else
-            return true;
+        return count != 0;
     }
 
 
@@ -238,16 +236,16 @@ public class studentDao {
             String sql = "select * from student_info where id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, findId);
-            ResultSet tmpres = stmt.executeQuery();
+            ResultSet temples = stmt.executeQuery();
             Student = new Student();
-            while (tmpres.next()) {
-                Student.setId(tmpres.getInt("id"));
-                Student.setName(tmpres.getString("name"));
-                Student.setSex(tmpres.getString("sex"));
-                Student.setAcademy(tmpres.getString("academy"));
-                Student.setMajor(tmpres.getString("major"));
-                Student.setGrade(tmpres.getString("grade"));
-                Student.setClasses(tmpres.getInt("classes"));
+            while (temples.next()) {
+                Student.setId(temples.getInt("id"));
+                Student.setName(temples.getString("name"));
+                Student.setSex(temples.getString("sex"));
+                Student.setAcademy(temples.getString("academy"));
+                Student.setMajor(temples.getString("major"));
+                Student.setGrade(temples.getString("grade"));
+                Student.setClasses(temples.getInt("classes"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

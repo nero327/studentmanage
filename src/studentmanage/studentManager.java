@@ -31,7 +31,6 @@ public class studentManager {
             System.out.println("学号：" + Student.getId() + " 姓名：" + Student.getName() + " 性别：" + Student.getSex() + " 学院：" + Student.getAcademy() + " 专业：" + Student.getMajor() + " 年级：" + Student.getGrade() + " 班级：" + Student.getClasses());
         }
     }
-
     //查询学生信息
     public void find() {
         System.out.println("请输入学生学号id：");
@@ -72,7 +71,7 @@ public class studentManager {
     }
 
     //修改学生信息
-    public void change() {
+    public void change(){
         studentDao dao = new studentDao();
         System.out.println("请输入要修改的学生学号id：");
         Integer changeId = Integer.valueOf(sc.next());

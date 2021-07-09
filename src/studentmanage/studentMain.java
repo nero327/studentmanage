@@ -1,8 +1,6 @@
 package studentmanage;
 
-import javax.print.StreamPrintServiceFactory;
 import java.util.Scanner;
-import java.util.concurrent.TransferQueue;
 
 public class studentMain {
     public static void main(String[] args) {
@@ -14,8 +12,7 @@ public class studentMain {
             System.out.println("0 显示全部学生信息");
             System.out.println("欢迎来到学生信息管理系统");
             System.out.println("1 按学号搜索学生信息");
-            System.out.println("2 增加学生信息");
-            System.out.println("3 修改学生信息");
+            System.out.println("2 增加学生信息,");
             System.out.println("4 删除学生信息");
             System.out.println("5 退出");
             System.out.println("------------");
@@ -36,4 +33,5 @@ public class studentMain {
         }
     }
 }
+
 
